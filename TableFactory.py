@@ -60,9 +60,9 @@ __email__ = "kirk@strauser.com"
 __status__ = "Production"
 __version__ = "0.1.2"
 
-import cgi
 import copy
 import datetime
+import html
 import io
 
 import xlwt
@@ -268,7 +268,7 @@ class TableBase(object):
         if value is None:
             return ''
         castfunction = self.castfunctions.get(type(value), str)
-        return cgi.escape(castfunction(value))
+        return html.escape(castfunction(value))
 
 class PDFTable(TableBase):
     """Table generator that yields a PDF representation of the data"""
